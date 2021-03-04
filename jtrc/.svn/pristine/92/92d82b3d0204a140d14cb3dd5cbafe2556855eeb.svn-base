@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.i84.earnpoint.mapper.JobFairAreaMapper">
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.JobFairArea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fair_id" jdbcType="INTEGER" property="fairId" />
+    <result column="area_no" jdbcType="VARCHAR" property="areaNo" />
+    <result column="position_count" jdbcType="INTEGER" property="positionCount" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fair_id, area_no, position_count, description, create_time, update_time
+  </sql>
+  
+  <select id="getJobFairAreaByMap" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		id, fair_id as fairid, area_no as areano, position_count as positioncount, description, create_time, update_time
+		FROM job_fair_area 
+		<where>
+			<if test="id != null">
+				and fair_id = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="areaId != null">
+				and id = #{areaId,jdbcType=INTEGER}
+			</if>
+		</where>
+  </select>
+	
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_fair_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from job_fair_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByFairId" parameterType="java.lang.Integer">
+    delete from job_fair_area
+    where fair_id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.i84.earnpoint.model.JobFairArea">
+    insert into job_fair_area (id, fair_id, area_no, 
+      position_count, description, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{fairId,jdbcType=INTEGER}, #{areaNo,jdbcType=VARCHAR}, 
+      #{positionCount,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.JobFairArea">
+    insert into job_fair_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fairId != null">
+        fair_id,
+      </if>
+      <if test="areaNo != null">
+        area_no,
+      </if>
+      <if test="positionCount != null">
+        position_count,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fairId != null">
+        #{fairId,jdbcType=INTEGER},
+      </if>
+      <if test="areaNo != null">
+        #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCount != null">
+        #{positionCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.JobFairArea">
+    update job_fair_area
+    <set>
+      <if test="fairId != null">
+        fair_id = #{fairId,jdbcType=INTEGER},
+      </if>
+      <if test="areaNo != null">
+        area_no = #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCount != null">
+        position_count = #{positionCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.JobFairArea">
+    update job_fair_area
+    set fair_id = #{fairId,jdbcType=INTEGER},
+      area_no = #{areaNo,jdbcType=VARCHAR},
+      position_count = #{positionCount,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

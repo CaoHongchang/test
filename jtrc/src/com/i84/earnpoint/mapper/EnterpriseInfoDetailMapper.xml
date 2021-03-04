@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.i84.earnpoint.mapper.EnterpriseInfoDetailMapper">
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="scale" jdbcType="INTEGER" property="scale" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="registered_capital" jdbcType="VARCHAR" property="registeredCapital" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="welfare" jdbcType="VARCHAR" property="welfare" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="link_tel" jdbcType="VARCHAR" property="linkTel" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, enterprise_id, name, type, scale, province, city, area, address, registered_capital, 
+    website, logo_url, welfare, linkman, link_tel, create_time, update_time, status, reason,delete_time
+  </sql>
+  <sql id="Blob_Column_List">
+    introduction
+  </sql>
+  
+  <select id="">
+  select enterprise_id from enterprise_info_detail where id= #{id,jdbcType=INTEGER}
+  
+  </select>
+  
+  
+  <!-- 招聘企业列表 -->
+  <select id="queryEnterprise" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+  	select eid.id, DATE_FORMAT(eid.create_time, '%Y-%m-%d') as create_time,ei.c_code,eid.name,eid.province,eid.city,eid.area,eid.address,eid.type,eid.status,eid.reason
+  	,ei.id as enterprise_id
+	from enterprise_info_detail eid
+	left join enterprise_info ei on ei.id = eid.enterprise_id
+	where eid.delete_time is null
+    <if test="status != null">
+       and eid.status in 
+       <foreach collection="status" index="index" item="item" open="(" separator="," close=")"> 
+		  #{item} 
+	   </foreach>
+   </if>
+   <if test="name != null and name != ''">
+ 	  and ((eid.name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')) OR (ei.c_code like CONCAT('%',#{name,jdbcType=VARCHAR},'%')))
+   </if>
+   <if test="starttime!=null and starttime!=''">
+   		<![CDATA[and DATE_FORMAT(eid.create_time, '%Y-%m-%d') >=  DATE_FORMAT(#{starttime}, '%Y-%m-%d')]]>
+   </if>
+   <if test="endtime!=null and endtime!=''">
+    	<![CDATA[and DATE_FORMAT(eid.create_time, '%Y-%m-%d') <= DATE_FORMAT(#{endtime}, '%Y-%m-%d')]]>
+   </if>
+   order by eid.create_time desc
+  </select>
+  
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from enterprise_info_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+	  
+  <select id="selectByEnterpriseId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from enterprise_info_detail
+    where enterprise_id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from enterprise_info_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByenterpriseId" parameterType="java.lang.Integer">
+    delete from enterprise_info_detail
+    where enterprise_id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    insert into enterprise_info_detail (id, enterprise_id, name, 
+      type, scale, province, 
+      city, area, address, 
+      registered_capital, website, logo_url, 
+      welfare, linkman, link_tel, 
+      create_time, update_time, introduction, status,reason,delete_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{scale,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{registeredCapital,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{logoUrl,jdbcType=VARCHAR}, 
+      #{welfare,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{linkTel,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{introduction,jdbcType=LONGVARCHAR},
+      #{status,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{deleteTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    insert into enterprise_info_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="enterpriseId != null">
+        enterprise_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="welfare != null">
+        welfare,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="linkTel != null">
+        link_tel,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null">
+        #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null">
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+       <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    update enterprise_info_detail
+    <set>
+      <if test="enterpriseId != null">
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null">
+        welfare = #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null">
+        link_tel = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    update enterprise_info_detail
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      scale = #{scale,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      welfare = #{welfare,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.EnterpriseInfoDetail">
+    update enterprise_info_detail
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      scale = #{scale,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      welfare = #{welfare,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      update_time = #{deleteTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

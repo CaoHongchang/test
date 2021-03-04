@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.i84.earnpoint.mapper.UserLoginLogMapper" >
+ 
+	 <insert id="insert" parameterType="HashMap">
+	 
+		INSERT INTO user_login_log (
+			user_Id,
+			ip,
+			sys_opt,
+			os,
+			browser,
+			type,
+			login_date,
+			create_date
+		)
+		VALUES
+			(
+				#{userId},
+				#{IP},
+				#{sysOpt},
+				#{OS},
+				#{browser},
+				#{type},
+				#{loginDate},
+				now()
+			);
+	 </insert>
+    
+</mapper>

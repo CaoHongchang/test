@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.i84.earnpoint.mapper.StudentAchievementMapper" >
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.StudentAchievement" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="education_num" property="educationNum" jdbcType="VARCHAR" />
+    <result column="pnum" property="pnum" jdbcType="VARCHAR" />
+    <result column="yw" property="yw" jdbcType="VARCHAR" />
+    <result column="sx" property="sx" jdbcType="VARCHAR" />
+    <result column="yy" property="yy" jdbcType="VARCHAR" />
+    <result column="zz" property="zz" jdbcType="VARCHAR" />
+    <result column="mf" property="mf" jdbcType="VARCHAR" />
+    <result column="del_date" property="delDate" jdbcType="TIMESTAMP" />
+    <result column="add_date" property="addDate" jdbcType="TIMESTAMP" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="is_want" property="isWant" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, education_num, pnum, yw, sx, yy, zz, mf, del_date, add_date, uid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_achievement
+    where id = #{id,jdbcType=INTEGER} and del_date is null
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student_achievement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.i84.earnpoint.model.StudentAchievement" >
+    insert into student_achievement (id, education_num, pnum, 
+      yw, sx, yy, zz, 
+      mf, del_date, add_date, 
+      uid)
+    values (#{id,jdbcType=INTEGER}, #{educationNum,jdbcType=VARCHAR}, #{pnum,jdbcType=VARCHAR}, 
+      #{yw,jdbcType=REAL}, #{sx,jdbcType=REAL}, #{yy,jdbcType=REAL}, #{zz,jdbcType=REAL}, 
+      #{mf,jdbcType=REAL}, #{delDate,jdbcType=TIMESTAMP}, #{addDate,jdbcType=TIMESTAMP}, 
+      #{uid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.StudentAchievement" >
+    insert into student_achievement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="educationNum != null" >
+        education_num,
+      </if>
+      <if test="pnum != null" >
+        pnum,
+      </if>
+      <if test="yw != null" >
+        yw,
+      </if>
+      <if test="sx != null" >
+        sx,
+      </if>
+      <if test="yy != null" >
+        yy,
+      </if>
+      <if test="zz != null" >
+        zz,
+      </if>
+      <if test="mf != null" >
+        mf,
+      </if>
+      <if test="delDate != null" >
+        del_date,
+      </if>
+      <if test="addDate != null" >
+        add_date,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="isWant != null" >
+        is_want,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="educationNum != null" >
+        #{educationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null" >
+        #{pnum,jdbcType=VARCHAR},
+      </if>
+      <if test="yw != null" >
+        #{yw,jdbcType=REAL},
+      </if>
+      <if test="sx != null" >
+        #{sx,jdbcType=REAL},
+      </if>
+      <if test="yy != null" >
+        #{yy,jdbcType=REAL},
+      </if>
+      <if test="zz != null" >
+        #{zz,jdbcType=REAL},
+      </if>
+      <if test="mf != null" >
+        #{mf,jdbcType=REAL},
+      </if>
+      <if test="delDate != null" >
+        #{delDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+       <if test="isWant != null" >
+        #{isWant,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.StudentAchievement" >
+    update student_achievement
+    <set >
+      <if test="educationNum != null" >
+        education_num = #{educationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null" >
+        pnum = #{pnum,jdbcType=VARCHAR},
+      </if>
+      <if test="yw != null" >
+        yw = #{yw,jdbcType=REAL},
+      </if>
+      <if test="sx != null" >
+        sx = #{sx,jdbcType=REAL},
+      </if>
+      <if test="yy != null" >
+        yy = #{yy,jdbcType=REAL},
+      </if>
+      <if test="zz != null" >
+        zz = #{zz,jdbcType=REAL},
+      </if>
+      <if test="mf != null" >
+        mf = #{mf,jdbcType=REAL},
+      </if>
+      <if test="delDate != null" >
+        del_date = #{delDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addDate != null" >
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="isWant != null" >
+        is_want = #{isWant,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.StudentAchievement" >
+    update student_achievement
+    set education_num = #{educationNum,jdbcType=VARCHAR},
+      pnum = #{pnum,jdbcType=VARCHAR},
+      yw = #{yw,jdbcType=REAL},
+      sx = #{sx,jdbcType=REAL},
+      yy = #{yy,jdbcType=REAL},
+      zz = #{zz,jdbcType=REAL},
+      mf = #{mf,jdbcType=REAL},
+      del_date = #{delDate,jdbcType=TIMESTAMP},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      is_want = #{isWant,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectisExist" resultMap="BaseResultMap" parameterType="com.i84.earnpoint.model.StudentSignup" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_achievement
+    where  del_date is null and pnum = #{pnum,jdbcType=VARCHAR} and education_num=#{educationNum,jdbcType=VARCHAR} limit 1
+  </select>
+  
+</mapper>

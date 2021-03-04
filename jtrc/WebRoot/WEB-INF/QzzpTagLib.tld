@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <taglib>
+ <tlib-version>1.0</tlib-version>
+ <jsp-version>1.2</jsp-version>
+ <short-name>hwtt</short-name>
+ <uri>http://www.hwttnet.com/Framework/tags</uri>
+	<tag>
+		<name>dict</name>
+		<tag-class>com.i84.earnpoint.jobfair.common.DictTag</tag-class>
+		<description>字典控件,用户需提供字典编码,字典配置在dictionary-qzzp.xml</description>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>select 下拉框 id 属性,readonly为false时必填</description>
+		</attribute>
+
+		<attribute>
+			<name>headerLabel</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>select 下拉框 空选项提示信息</description>
+		</attribute>
+
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>select 下拉框 宽度 </description>
+		</attribute>
+
+		<attribute>
+			<name>dictCode</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>字典编码，值为字典管理的字典编码字段值</description>
+		</attribute>
+
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>默认选中值</description>
+		</attribute>
+
+		<attribute>
+			<name>readonly</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>只读模式，只会生成文本和input type="hidden">的html， 在列表和查看页面使用</description>
+		</attribute>
+
+		<attribute>
+			<name>disabled</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>不可用模式，值为true 会在select 中加入disabled = disabled 属性</description>
+		</attribute>
+		<attribute>
+			<name>classStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>class样式</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>css内联样式</description>
+		</attribute>
+	</tag>
+</taglib>

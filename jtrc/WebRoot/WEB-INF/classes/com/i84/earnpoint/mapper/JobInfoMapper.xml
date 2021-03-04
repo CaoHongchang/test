@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.i84.earnpoint.mapper.JobInfoMapper">
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.JobInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="enterprice_id" jdbcType="INTEGER" property="enterpriceId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="salary" jdbcType="VARCHAR" property="salary" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="edu_level" jdbcType="VARCHAR" property="eduLevel" />
+    <result column="work_life" jdbcType="VARCHAR" property="workLife" />
+    <result column="recruit_count" jdbcType="INTEGER" property="recruitCount" />
+    <result column="require_sex" jdbcType="VARCHAR" property="requireSex" />
+    <result column="browser_count" jdbcType="INTEGER" property="browserCount" />
+    <result column="collect_count" jdbcType="INTEGER" property="collectCount" />
+    <result column="resume_count" jdbcType="INTEGER" property="resumeCount" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.i84.earnpoint.model.JobInfoWithBLOBs">
+    <result column="require_content" jdbcType="LONGVARCHAR" property="requireContent" />
+    <result column="duty_content" jdbcType="LONGVARCHAR" property="dutyContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, enterprice_id, name, province, city, salary, type, edu_level, work_life, recruit_count, 
+    require_sex, browser_count, collect_count, resume_count, status, create_time, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    require_content, duty_content
+  </sql>
+  <!-- 企业招聘信息列表查询 -->
+  <select id="selectBySelective" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select 
+		<include refid="Base_Column_List"></include>
+		from job_info
+		<where>
+			<if test="status != null and status != ''">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="type != null">
+				and type in
+				<foreach collection="type" index="index" item="item" open="("
+					separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="name != null and name != ''">
+				and name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime!=null and starttime!=''">
+		   		<![CDATA[   and DATE_FORMAT(create_time, '%Y-%m-%d') >=  DATE_FORMAT(#{starttime}, '%Y-%m-%d')   ]]>
+			</if>
+			<if test="endtime!=null and endtime!=''">
+		    	<![CDATA[  and DATE_FORMAT(create_time, '%Y-%m-%d') <= DATE_FORMAT(#{endtime}, '%Y-%m-%d')    ]]>
+			</if>
+		</where>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from job_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from job_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.i84.earnpoint.model.JobInfoWithBLOBs">
+    insert into job_info (id, enterprice_id, name, 
+      province, city, salary, 
+      type, edu_level, work_life, 
+      recruit_count, require_sex, browser_count, 
+      collect_count, resume_count, status, 
+      create_time, update_time, require_content, 
+      duty_content)
+    values (#{id,jdbcType=INTEGER}, #{enterpriceId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{eduLevel,jdbcType=VARCHAR}, #{workLife,jdbcType=VARCHAR}, 
+      #{recruitCount,jdbcType=INTEGER}, #{requireSex,jdbcType=VARCHAR}, #{browserCount,jdbcType=INTEGER}, 
+      #{collectCount,jdbcType=INTEGER}, #{resumeCount,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{requireContent,jdbcType=LONGVARCHAR}, 
+      #{dutyContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.JobInfoWithBLOBs">
+    insert into job_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="enterpriceId != null">
+        enterprice_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="eduLevel != null">
+        edu_level,
+      </if>
+      <if test="workLife != null">
+        work_life,
+      </if>
+      <if test="recruitCount != null">
+        recruit_count,
+      </if>
+      <if test="requireSex != null">
+        require_sex,
+      </if>
+      <if test="browserCount != null">
+        browser_count,
+      </if>
+      <if test="collectCount != null">
+        collect_count,
+      </if>
+      <if test="resumeCount != null">
+        resume_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="requireContent != null">
+        require_content,
+      </if>
+      <if test="dutyContent != null">
+        duty_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriceId != null">
+        #{enterpriceId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="eduLevel != null">
+        #{eduLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="workLife != null">
+        #{workLife,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitCount != null">
+        #{recruitCount,jdbcType=INTEGER},
+      </if>
+      <if test="requireSex != null">
+        #{requireSex,jdbcType=VARCHAR},
+      </if>
+      <if test="browserCount != null">
+        #{browserCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null">
+        #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="resumeCount != null">
+        #{resumeCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requireContent != null">
+        #{requireContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dutyContent != null">
+        #{dutyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.JobInfoWithBLOBs">
+    update job_info
+    <set>
+      <if test="enterpriceId != null">
+        enterprice_id = #{enterpriceId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="eduLevel != null">
+        edu_level = #{eduLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="workLife != null">
+        work_life = #{workLife,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitCount != null">
+        recruit_count = #{recruitCount,jdbcType=INTEGER},
+      </if>
+      <if test="requireSex != null">
+        require_sex = #{requireSex,jdbcType=VARCHAR},
+      </if>
+      <if test="browserCount != null">
+        browser_count = #{browserCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null">
+        collect_count = #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="resumeCount != null">
+        resume_count = #{resumeCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requireContent != null">
+        require_content = #{requireContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dutyContent != null">
+        duty_content = #{dutyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.i84.earnpoint.model.JobInfoWithBLOBs">
+    update job_info
+    set enterprice_id = #{enterpriceId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      edu_level = #{eduLevel,jdbcType=VARCHAR},
+      work_life = #{workLife,jdbcType=VARCHAR},
+      recruit_count = #{recruitCount,jdbcType=INTEGER},
+      require_sex = #{requireSex,jdbcType=VARCHAR},
+      browser_count = #{browserCount,jdbcType=INTEGER},
+      collect_count = #{collectCount,jdbcType=INTEGER},
+      resume_count = #{resumeCount,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      require_content = #{requireContent,jdbcType=LONGVARCHAR},
+      duty_content = #{dutyContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.JobInfo">
+    update job_info
+    set enterprice_id = #{enterpriceId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      edu_level = #{eduLevel,jdbcType=VARCHAR},
+      work_life = #{workLife,jdbcType=VARCHAR},
+      recruit_count = #{recruitCount,jdbcType=INTEGER},
+      require_sex = #{requireSex,jdbcType=VARCHAR},
+      browser_count = #{browserCount,jdbcType=INTEGER},
+      collect_count = #{collectCount,jdbcType=INTEGER},
+      resume_count = #{resumeCount,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

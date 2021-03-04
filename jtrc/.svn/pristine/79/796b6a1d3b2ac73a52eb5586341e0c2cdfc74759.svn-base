@@ -1,0 +1,73 @@
+
+textarea {
+	resize: none;
+}
+/* form {
+	/*padding-top: 5px;*/
+} */
+fieldset {
+	padding: 10px;
+	border: 1px dotted #D1D7DC;
+}
+
+legend {
+	border: 1px dotted #D1D7DC;
+	font-size: small;
+}
+.table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.table th,.table td {
+	border: 1px solid #ebeaea;
+	height: 30px;
+	text-align: left;
+}
+
+.table th {
+	padding: 0 18px;
+	background: #F8F8F8;
+	text-align: right;
+	font-size:12px;
+	font-weight: 400;
+}
+.table td {
+	padding: 2px 5px;
+}
+.table thead th {
+	text-align: center;
+}
+
+.table tbody th {
+	text-align: right;
+}
+
+.table tr:hover {
+	background-color: #f6fafd;
+}
+
+.table td:hover {
+	background-color: #f9feff;
+}
+
+#form th {
+	text-align: right;
+}
+
+#form th,#form td {
+	padding: 0.1em 0.3em;
+	border: 1px solid #D1D7DC;
+}
+
+#form input,#form select,#form textarea {
+	width: 150px;
+	font-size: 12px;
+}
+
+#form input[type='checkbox'],#form input[type='radio'] {
+	width: 20px;
+}
+#form .bottom_btns td {
+    border: 0;
+}

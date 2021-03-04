@@ -1,0 +1,282 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+margin:0;
+padding:0;
+}
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+fieldset,img {
+border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+font-style:normal;
+font-weight:normal;
+}
+ol,ul {
+list-style:none;
+}
+caption,th {
+text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+font-size:100%;
+font-weight:normal;
+}
+q:before,q:after {
+content:'';
+}
+abbr,acronym { border:0;
+}
+
+body {
+}
+
+#header {
+	width:974px;
+	height:88px;
+	margin:0 auto;
+}
+
+#header #logo {
+	margin:17px 0 0 15px;
+	float:left;
+}
+
+#search_bar {
+	float:right;
+	width:246px;
+	height:30px;
+	background:url(../images/search_bar_bg.gif) left no-repeat;
+	margin:50px 10px 0 0;
+	padding:0;
+	display:inline;
+}
+
+#search_bar .search_text{
+	border:none;
+	height:20px;
+	width:180px;
+	background: none;
+	float:left;
+	margin:6px 0 0 8px;
+	font-size:12px;
+	color:#666666;
+	padding-top:2px;
+}
+
+#search_bar .search_btn{
+	width:58px;
+	height:30px;
+	background:url(../images/search_btn.gif) no-repeat;
+	border:0;
+	float:right;
+	cursor:pointer;
+}
+
+
+#mainnav {
+	width:974px;
+	height:10px;
+	background:url(../images/mainnav_bg.gif) repeat-x;
+	margin:0 auto;
+}
+
+#mainnav li {
+	float:left;
+	margin-right:40px;
+}
+
+#footer {
+	font-size:12px;
+	width:974px;
+	text-align:center;
+	margin:0 auto;
+	font-family:Arial;
+	color:#666666;
+	margin-top:8px;
+	line-height:40px;
+	border-top:1px solid #e4e9ec;
+}
+
+#lyout {
+	width:974px;
+	overflow:hidden;
+	margin:0 auto;
+	background:#FFFFFF;
+}
+
+#lyout .left {
+	width:646px;
+	float:left;
+	overflow:hidden;
+}
+#lyout .right {
+	float:right;
+}
+
+#lyout .left  img {
+	display:block;
+}
+
+#lyout .left .yewugg {
+	width:419px; 
+	border:1px solid #dbe1e6;
+	height:194px;
+	float:left;
+	margin-top:8px;
+}
+
+#lyout .left .yewugg dt {
+	height:29px;
+	background:url(../images/dt_bg.gif) repeat-x;
+	font-size:12px;
+	font-weight:bold;
+	color:#00177e;
+	line-height:29px;
+	padding-left:8px;
+}
+
+#lyout .left .yewugg dd ul {
+	margin-top:8px;
+}
+
+#lyout .left .yewugg dd ul li {
+	font-size:12px;
+	text-align:right;
+	height:24px;
+	width:400px;
+	font-family:Arial;
+	color:#999;
+	
+}
+
+#lyout .left .yewugg dd ul li a {
+	font-size:12px;
+	color:#666666;
+	float:left;
+	line-height:24px;
+	padding-left:13px;
+	background:url(../images/mark3.gif) 4px 9px no-repeat;
+	text-decoration:none;
+}
+
+#lyout .left .yewugg dd ul li a:hover {
+	text-decoration:underline;
+}
+
+#lyout .left #zixun {
+	width:215px;
+	height:194px;
+	float:left;
+	margin-left:8px;
+	display:inline;
+	border:1px solid #dbe1e6;
+	margin-top:8px;		
+}
+
+#lyout .left #zixun dt {
+	height:29px;
+	background:url(../images/dt_bg.gif) repeat-x;
+	font-size:12px;
+	font-weight:bold;
+	color:#00177e;
+	line-height:29px;
+	padding-left:8px;
+}
+
+#lyout .left #zixun dd ul {
+	margin-top:6px;
+	margin-left:18px;
+}
+#lyout .left #zixun dd ul li {
+	font-size:12px;
+	color:#666666;
+	font-family:Arial;
+	line-height:26px;	
+}
+
+
+#lyout .right  .login {
+	width:318px;
+	height:341px;
+	border:1px solid #dbe1e6;
+	border-top:none;
+	background:url(../images/login_box_bg.gif) bottom;
+	
+}
+
+#lyout .right  .login dt {
+	height:46px;
+	background:url(../images/dailishang_title.gif) left no-repeat;
+} 
+
+#lyout .right  .login dt a {
+	float:right;
+}
+
+#lyout .right  .login dd table {
+	width:300px;
+	margin-top:15px;
+	margin-left:10px;
+}
+
+#lyout .right  .login dd table td {
+	height:42px;
+	font-size:12px;
+	color:#666666;
+}
+
+#lyout .right  .login dd table td.label {
+	text-align:right;
+	width:80px;
+	font-family:Arial;
+	line-height:32px;
+}
+
+#lyout .right  .login dd table td input {
+	height:18px;
+	border:1px solid #cecece;
+	background:#fff url(../images/input_bg.gif) repeat-x;
+	padding-top:4px;
+	color:#666666;
+	margin-right:6px;
+}
+
+#lyout .right  .login dd table .login_button {
+	width:69px;
+	height:26px;
+	background:url(../images/login_button.gif) no-repeat;
+	border:none;
+	cursor:pointer;
+}
+
+#lyout .right  .login dd table .reset {
+	line-height:30px;
+	margin-right:20px;
+	margin-left:10px;
+	display:inline;
+}
+
+#lyout .right .jiameng_liucheng {
+	width:318px;
+	border:1px solid #dbe1e6;
+	margin-top:8px;
+	height:195px;
+}
+
+#lyout .right .jiameng_liucheng dt {
+	height:29px;
+	background:url(../images/dt_bg.gif) repeat-x;
+	font-size:12px;
+	font-weight:bold;
+	color:#00177e;
+	line-height:29px;
+	padding-left:8px;
+}
+
+#lyout .right .jiameng_liucheng dd img {
+	margin-top:25px;
+	margin-left:20px;
+}

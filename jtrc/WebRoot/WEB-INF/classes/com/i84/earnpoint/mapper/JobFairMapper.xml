@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.i84.earnpoint.mapper.JobFairMapper">
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.JobFair">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="hold_time" jdbcType="TIMESTAMP" property="holdTime" />
+    <result column="hold_place" jdbcType="VARCHAR" property="holdPlace" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="create_uid" jdbcType="INTEGER" property="createUid" />
+    <result column="delete_uid" jdbcType="INTEGER" property="deleteUid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.i84.earnpoint.model.JobFair">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="explain_content" jdbcType="LONGVARCHAR" property="explainContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, hold_time, hold_place, type, status, create_time, update_time,content, delete_time,create_uid,delete_uid
+  </sql>
+  <sql id="Blob_Column_List">
+    explain_content,content
+  </sql>
+
+	<select id="selectBySelective" resultType="java.util.HashMap"
+		parameterType="java.util.HashMap">
+		select id, name,DATE_FORMAT(hold_time, '%Y-%m-%d') as hold_time,
+		hold_place, type, status,
+		<include refid="Blob_Column_List" />
+		from job_fair
+		where delete_time is null
+		<if test="status != null and status != ''">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="type != null">
+			and type in
+			<foreach collection="type" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="name != null and name != ''">
+			and name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="starttime!=null and starttime!=''">
+	   		<![CDATA[   and DATE_FORMAT(hold_time, '%Y-%m-%d') >=  DATE_FORMAT(#{starttime}, '%Y-%m-%d')   ]]>
+		</if>
+		<if test="endtime!=null and endtime!=''">
+	    	<![CDATA[  and DATE_FORMAT(hold_time, '%Y-%m-%d') <= DATE_FORMAT(#{endtime}, '%Y-%m-%d')    ]]>
+		</if>
+		order by hold_time desc
+	</select>
+
+	<select id="getByMap" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		 ,
+    	<include refid="Blob_Column_List" />
+		FROM job_fair
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from job_fair
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from job_fair
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.i84.earnpoint.model.JobFair">
+    insert into job_fair (id, name, hold_time, 
+      hold_place, type, status, create_time, 
+      update_time, content, create_uid, explain_content)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{holdTime,jdbcType=TIMESTAMP}, 
+      #{holdPlace,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}, #{createUid,jdbcType=INTEGER}, #{explainContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.JobFair">
+    insert into job_fair
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="holdTime != null">
+        hold_time,
+      </if>
+      <if test="holdPlace != null">
+        hold_place,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="createUid != null">
+        create_uid,
+      </if>
+      <if test="deleteUid != null">
+        delete_uid,
+      </if>
+      <if test="explainContent !=null ">
+      	explain_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="holdTime != null">
+        #{holdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="holdPlace != null">
+        #{holdPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null">
+        #{createUid,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUid != null">
+        #{deleteUid,jdbcType=INTEGER},
+      </if>
+      <if test="explainContent != null">
+        #{explainContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.JobFair">
+    update job_fair
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="holdTime != null">
+        hold_time = #{holdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="holdPlace != null">
+        hold_place = #{holdPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deleteTime != null">
+      	delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null">
+      	create_uid = #{createUid,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUid != null">
+      	delete_uid = #{deleteUid,jdbcType=INTEGER},
+      </if>
+       <if test="explainContent != null">
+      	explain_content = #{explainContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.i84.earnpoint.model.JobFair">
+    update job_fair
+    set name = #{name,jdbcType=VARCHAR},
+      hold_time = #{holdTime,jdbcType=TIMESTAMP},
+      hold_place = #{holdPlace,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.JobFair">
+    update job_fair
+    set name = #{name,jdbcType=VARCHAR},
+      hold_time = #{holdTime,jdbcType=TIMESTAMP},
+      hold_place = #{holdPlace,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

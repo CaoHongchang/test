@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.i84.earnpoint.mapper.AqsczxInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.AqsczxInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="enterprise_info_id" property="enterpriseInfoId" jdbcType="INTEGER" />
+    <result column="apply_type" property="applyType" jdbcType="INTEGER" />
+    <result column="apply_status" property="applyStatus" jdbcType="INTEGER" />
+    <result column="contract_status" property="contractStatus" jdbcType="INTEGER" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="apply_time_str" property="applyTimeStr" jdbcType="TIMESTAMP" />
+    <result column="business_scope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="registration_time" property="registrationTime" jdbcType="TIMESTAMP" />
+    <result column="registration_time_str" property="registrationTimeStr" jdbcType="VARCHAR" />
+    <result column="legal_representative" property="legalRepresentative" jdbcType="VARCHAR" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_mobile" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="org_code_certificate" property="orgCodeCertificate" jdbcType="VARCHAR" />
+    <result column="tax_registration_certificate" property="taxRegistrationCertificate" jdbcType="VARCHAR" />
+    <result column="company_watermark" property="companyWatermark" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="parent_name" property="parentName" jdbcType="VARCHAR" />
+    <result column="c_code" property="cCode" jdbcType="VARCHAR" />
+    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, enterprise_info_id, apply_type, apply_status, contract_status, 
+    apply_time, business_scope, registration_time, legal_representative, contact_name, 
+    contact_mobile, address, business_license, org_code_certificate, tax_registration_certificate, 
+    company_watermark, position, note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from aqsczx_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="map" >
+      SELECT 
+		  ai.id,
+		  ai.enterprise_info_id,
+		  ai.apply_type,
+		  ai.apply_status,
+		  ai.contract_status,
+		  ai.apply_time,
+		  DATE_FORMAT(ai.apply_time,'%Y-%m-%d') as apply_time_str,
+		  ai.business_scope,
+		  ai.registration_time,
+		  DATE_FORMAT(ai.registration_time,'%Y-%m-%d') as registration_time_str,
+		  ai.legal_representative,
+		  ai.contact_name,
+		  ai.contact_mobile,
+		  ai.address,
+		  ai.business_license,
+		  ai.org_code_certificate,
+		  ai.tax_registration_certificate,
+		  ai.company_watermark,
+		  ai.position,
+		  ai.note,
+		  ei.`c_code`,
+		  ei.`name`,
+		  ei.`pro_id`,
+		  (SELECT 
+		    i.`name` 
+		  FROM
+		    enterprise_info i 
+		  WHERE i.id = ei.parent_id) as parent_name 
+		FROM
+		  aqsczx_info ai,
+		  enterprise_info ei 
+		WHERE ai.enterprise_info_id = ei.id 
+		  AND ei.`del_date` IS NULL 
+	  <if test="cCode!=null">
+	  	AND ei.c_code = #{cCode}
+	  </if>
+	  <if test="name!=null">
+	  	AND ei.name = #{name}
+	  </if>
+	  <if test="applyType!=null" >
+	  	AND ai.apply_type = #{applyType}
+	  </if>
+	  <if test="applyStatus!=null" >
+	  	<choose>  
+            <when test="applyStatus>=3">  
+                AND ai.apply_status >= #{applyStatus}
+            </when >  
+            <otherwise> 
+            	 AND ai.apply_status = #{applyStatus}
+            </otherwise>  
+        </choose>  
+	  </if>
+	  <if test = "contractStatus!=null" >
+	  	AND ai.contract_status = #{contractStatus}
+	  </if>
+	  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from aqsczx_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.i84.earnpoint.model.AqsczxInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into aqsczx_info (enterprise_info_id, apply_type, apply_status, 
+      contract_status, apply_time, 
+      business_scope, registration_time, legal_representative, 
+      contact_name, contact_mobile, address, 
+      business_license, org_code_certificate, tax_registration_certificate, 
+      company_watermark, position, note
+      )
+    values (#{enterpriseInfoId,jdbcType=INTEGER}, #{applyType,jdbcType=INTEGER}, #{applyStatus,jdbcType=INTEGER}, 
+      #{contractStatus,jdbcType=INTEGER}, #{applyTime,jdbcType=TIMESTAMP}, 
+      #{businessScope,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP}, #{legalRepresentative,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactMobile,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{businessLicense,jdbcType=VARCHAR}, #{orgCodeCertificate,jdbcType=VARCHAR}, #{taxRegistrationCertificate,jdbcType=VARCHAR}, 
+      #{companyWatermark,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.AqsczxInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into aqsczx_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enterpriseInfoId != null" >
+        enterprise_info_id,
+      </if>
+      <if test="applyType != null" >
+        apply_type,
+      </if>
+      <if test="applyStatus != null" >
+        apply_status,
+      </if>
+      <if test="contractStatus != null" >
+        contract_status,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="businessScope != null" >
+        business_scope,
+      </if>
+      <if test="registrationTime != null" >
+        registration_time,
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactMobile != null" >
+        contact_mobile,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="orgCodeCertificate != null" >
+        org_code_certificate,
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        tax_registration_certificate,
+      </if>
+      <if test="companyWatermark != null" >
+        company_watermark,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enterpriseInfoId != null" >
+        #{enterpriseInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="applyType != null" >
+        #{applyType,jdbcType=INTEGER},
+      </if>
+      <if test="applyStatus != null" >
+        #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="contractStatus != null" >
+        #{contractStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null" >
+        #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalRepresentative != null" >
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCodeCertificate != null" >
+        #{orgCodeCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        #{taxRegistrationCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWatermark != null" >
+        #{companyWatermark,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.AqsczxInfo" >
+    update aqsczx_info
+    <set >
+      <if test="enterpriseInfoId != null" >
+        enterprise_info_id = #{enterpriseInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="applyType != null" >
+        apply_type = #{applyType,jdbcType=INTEGER},
+      </if>
+      <if test="applyStatus != null" >
+        apply_status = #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="contractStatus != null" >
+        contract_status = #{contractStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessScope != null" >
+        business_scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null" >
+        registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCodeCertificate != null" >
+        org_code_certificate = #{orgCodeCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        tax_registration_certificate = #{taxRegistrationCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWatermark != null" >
+        company_watermark = #{companyWatermark,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.AqsczxInfo" >
+    update aqsczx_info
+    set enterprise_info_id = #{enterpriseInfoId,jdbcType=INTEGER},
+      apply_type = #{applyType,jdbcType=INTEGER},
+      apply_status = #{applyStatus,jdbcType=INTEGER},
+      contract_status = #{contractStatus,jdbcType=INTEGER},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      business_scope = #{businessScope,jdbcType=VARCHAR},
+      registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      org_code_certificate = #{orgCodeCertificate,jdbcType=VARCHAR},
+      tax_registration_certificate = #{taxRegistrationCertificate,jdbcType=VARCHAR},
+      company_watermark = #{companyWatermark,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="callSettersOnNulls" value="true" />
+		<setting name="logImpl" value="LOG4J" />
+		 <setting name="logImpl" value="STDOUT_LOGGING" />
+	</settings>
+	<!-- 实体类,简称 -设置别名 -->
+	<typeAliases>
+
+
+	</typeAliases>
+	<plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<property name="dialect" value="mysql" />
+			<!-- 该参数默认为false -->
+			<!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+			<!-- 和startPage中的pageNum效果一样 -->
+			<property name="offsetAsPageNum" value="true" />
+			<!-- 该参数默认为false -->
+			<!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+			<property name="rowBoundsWithCount" value="true" />
+			<!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+			<!-- （相当于没有执行分页查询，但是返回结果仍然是Page类型） -->
+			<property name="pageSizeZero" value="true" />
+			<!-- 3.3.0版本可用 - 分页参数合理化，默认false禁用 -->
+			<!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+			<!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+			<property name="reasonable" value="false" />
+
+		</plugin>
+	</plugins>
+	<!-- 实体接口映射资源 -->
+	<!-- 说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml -->
+	<mappers>
+		<mapper resource="com/i84/earnpoint/mapper/AuthMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/RoleMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserBgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ClassInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserScoreInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserPartyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserMoneyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserMaterialInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserJjMoneyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserExpertInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserExaminationInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserBMoneyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserBgMoneyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserArrearageInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/TypeInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/RsBusinessInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ResourceMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/PowerMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/PlaceInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/PartyMoneyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/MsgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/MsgFromInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/HyBusinessInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/EnterpriseMaterialInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/DepartmentInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/DealBusinessInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ClassInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgDepartmentInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgActivityInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgActivityUserInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgActivityArgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgEnterprisePlaceInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgActivityUserScoreInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BgActivityUserPayInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AqscZjmgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AqscMsgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AqscBmInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AdverTypeInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AdverInfoMapper.xml" />
+
+		<mapper resource="com/i84/earnpoint/mapper/EnterpriseInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/AgreementInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BusinessOtherInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/BusinessInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ZxTypeInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ZcActivityInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/StudyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/StudyUpInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserPartyInMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/WorkInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserPartyOutMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/UserMgInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesLogMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesBaseInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesMaterialInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesMaterialOtherInfoMapper.xml" />
+		
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesMyInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesPoliticalInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesKhInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesProInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesPtInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesDisciplinedInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesRewardInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesOutInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesOtherInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ResidenceQsInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ResidenceGetoutInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ResidenceIoInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesMoneyInfoMapper.xml" />
+
+		<mapper resource="com/i84/earnpoint/mapper/ResidenceIntInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/OfficialInfoMapper.xml" />
+
+		<mapper resource="com/i84/earnpoint/mapper/ResidenceInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ArchivesLogMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ProfessorBakInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ZcDissertationScoreMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ExpertActivityInfoMapper.xml" />
+
+		<mapper resource="com/i84/earnpoint/mapper/StudyCurupInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/ZcCurdissertationInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/WorkCurInfoMapper.xml" />
+		<mapper resource="com/i84/earnpoint/mapper/StudyCurInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ZcOtherInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamProjectInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamCertificateInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamClassInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamClassProjectMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamResultInfoMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/ExamTicketInfoMapper.xml" />
+		
+		<mapper resource="com/i84/earnpoint/mapper/AcademicEducationMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/StudentAchievementMapper.xml" />
+	    <mapper resource="com/i84/earnpoint/mapper/StudentSignupMapper.xml" />
+	</mappers>
+
+</configuration>  

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<!-- 注解扫描包 -->
+    <context:component-scan base-package="com.i84.earnpoint" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	<!-- 开启注解 -->
+	<mvc:annotation-driven />
+
+	<!--
+		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
+	-->
+	<mvc:resources mapping="/upload/**" location="/upload/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/temp/hygsgl/upload/**" location="/temp/hygsgl/upload/" />
+	<mvc:resources mapping="/temp/daxxgl/upload/**" location="/temp/daxxgl/upload/" />
+	<mvc:resources mapping="/temp/zxgl/upload/**" location="/temp/zxgl/upload/"/>
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/html/**" location="/html/" />
+    <mvc:resources mapping="/ckeditor/**" location="/ckeditor/" />
+    <mvc:resources mapping="/My97DatePicker/**" location="/My97DatePicker/" />
+    <mvc:resources mapping="/data/**" location="/data/" />
+	<mvc:resources mapping="/frontground/**" location="/frontground/" />
+	<mvc:resources mapping="/idcard/**" location="/idcard/" />
+	
+	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+		<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+	    <property name="maxUploadSize" value="10485760" />  
+	    <property name="maxInMemorySize" value="4096"/>
+	</bean>
+	<!-- 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/static/**" />
+            <mvc:exclude-mapping path="/upload/**" />
+			<bean class="com.i84.earnpoint.common.AuthInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	 -->
+</beans>

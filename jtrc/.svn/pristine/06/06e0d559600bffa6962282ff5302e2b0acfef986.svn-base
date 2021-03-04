@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.i84.earnpoint.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.i84.earnpoint.model.Role" >
+    <id column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="authIds" property="authids" jdbcType="VARCHAR" />
+    <result column="roleDescription" property="roledescription" jdbcType="VARCHAR" />
+  </resultMap> 
+  <sql id="Base_Column_List" >
+    roleId, roleName, authIds, roleDescription,roleState
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where roleId = #{roleid,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectListByPrimary" resultMap="BaseResultMap" parameterType="com.i84.earnpoint.model.Role" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where 1=1
+    <if test="rolename != null">
+     and roleName like CONCAT('%',#{rolename},'%')
+    </if>
+    
+    <if test="roleState != null and roleState !=''">
+     and roleState like CONCAT('%',#{roleState},'%')
+    </if>
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_role
+    where roleId = #{roleid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.i84.earnpoint.model.Role" >
+    insert into t_role (roleId, roleName, authIds, 
+      roleDescription)
+    values (#{roleid,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{authids,jdbcType=VARCHAR}, 
+      #{roledescription,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.i84.earnpoint.model.Role" >
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        roleId,
+      </if>
+      <if test="rolename != null" >
+        roleName,
+      </if>
+      <if test="authids != null" >
+        authIds,
+      </if>
+      <if test="roledescription != null" >
+        roleDescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="authids != null" >
+        #{authids,jdbcType=VARCHAR},
+      </if>
+      <if test="roledescription != null" >
+        #{roledescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.i84.earnpoint.model.Role" >
+    update t_role
+    <set >
+      <if test="rolename != null" >
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="authids != null" >
+        authIds = #{authids,jdbcType=VARCHAR},
+      </if>
+        <if test="roleState != null" >
+        roleState = #{roleState,jdbcType=VARCHAR},
+      </if>
+      <if test="roledescription != null" >
+        roleDescription = #{roledescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where roleId = #{roleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.i84.earnpoint.model.Role" >
+    update t_role
+    set roleName = #{rolename,jdbcType=VARCHAR},
+      authIds = #{authids,jdbcType=VARCHAR},
+      roleDescription = #{roledescription,jdbcType=VARCHAR}
+    where roleId = #{roleid,jdbcType=INTEGER}
+  </update>
+  
+    <select id="selectRoleByUser" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+   select a.roleId,a.roleName,b.userId,b.realName userName from t_role a,t_user b where a.roleId=b.roleId and a.del_date is null and b.del_date is null
+    <if test="roleName !=null and roleName !=''">
+    <!-- and a.roleId = #{roleId,jdbcType=INTEGER} -->
+    and a.roleName = #{roleName,jdbcType=VARCHAR} <!-- 目前先根据名称匹配 角色-->
+    </if>
+  </select>
+  
+  
+</mapper>

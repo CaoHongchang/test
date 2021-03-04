@@ -1,0 +1,458 @@
+@charset "utf-8";
+/* CSS Document */
+.w1000{width:1000px; margin:0 auto}
+
+
+/* 头部公用LOGO */
+.home-head-bg{background:url(../images/head_bg.jpg) center top no-repeat #fff;}
+.home-head{padding:40px 0 32px;}
+.home-head em{position:relative; top:4px;}
+.home-head span{position:relative; top:18px;}
+.home .guide{color:#888; margin-bottom:6px;}
+.home .guide a{color:#888;}
+.home .guide a:hover{color:#0d7cdf;}
+.home .guide em{color:#0d7cdf;}
+.home .box{background-color:#fff; border:1px solid #ddd; border-radius:5px; margin-bottom:20px; box-shadow:1px 2px 1px #eee; min-height:580px; position:relative; overflow:hidden;padding:26px 30px 20px;behavior: url(../PIE/PIE.htc);}
+
+
+/* 管理系统首页 */
+.glxt-bg{background:url(../images/glxt_bg.jpg) center top no-repeat #fff;}
+.guide-pages-bg{background:url(../images/guide_pages_bg.jpg) center top no-repeat #fff;}
+.glxt .top{text-align:right;background-position:0 0; height:35px; line-height:30px; }
+.glxt .logo{padding:40px 0 20px;}
+.glxt .logo span{padding-top:18px}
+.glxt .main{min-height:615px; position:relative;}
+.glxt .log-in{ width:360px; min-height:360px; background-color:#fff; border-radius:5px; position:absolute; right:0; top:100px; border:1px solid #ddd; overflow:hidden; box-shadow:1px 2px 1px #eee;behavior: url(../PIE/PIE.htc);}
+.glxt .log-in .form{padding:0 20px}
+.glxt .log-in .form li{margin-top:21px;color:#666; font-size:14px; position:relative;}
+.glxt .log-in label{width:72px; display:inline-block; text-align:right; color:#666; font-size:14px; margin-right:6px;}
+.glxt .log-in input{width:100% !important; height:36px !important; line-height:36px !important; border-radius:0; border:1px solid #ddd; padding-left:10px;color:#444; box-shadow:0 2px 2px #e5e5e5 inset; font-size:14px; border-radius:5px;}
+.glxt .log-in a.btn-login{width:100%; height:40px; line-height:40px;display:block; font-size:18px; color:#fff; text-align:center;background:url(../images/btn_bg.png) 0 0 no-repeat;}
+.glxt .log-in a.btn-login:hover{color:#ffff00}
+.glxt .log-in .btn-forget{text-align:center; margin:16px 0 18px;}
+.glxt .log-in .btn-forget a{ display:inline-block; font-size:12px; color:#2673b8; text-decoration:underline;}
+.glxt .log-in .btn-forget a:hover{color:#2673b8}
+.glxt .log-in .btn-forget em{font-size:12px; font-family:"宋体"; margin:0 3px;}
+.glxt .log-in .form li.code img{vertical-align:top; width:108px; height:36px; margin-left:10px;}
+.glxt .log-in .form li.code input{width:200px !important;}
+
+
+.glxt .head{padding:26px 0 24px}
+.glxt .head span{ padding-top:20px}
+.glxt .menu{background:url(../images/bg_base.png) 0 -35px repeat-x; height:40px; line-height:40px; margin-bottom:10px;}
+.glxt .menu li{ width:200px; display:block; float:left; height:45px; line-height:45px;background-color:#99CC00; position:relative; bottom:5px;background:url(../images/bg_base.png) 0 -270px repeat-x; border-radius:5px 5px 0 0; text-align:center; behavior: url(../../../PIE/PIE.htc);}
+.glxt .menu li a{display:block; color:#fff; font-size:18px;}
+.glxt .menu span{color:#fff}
+.glxt .menu span a{color:#fff; text-decoration:underline}
+.glxt .menu span a:hover{color:#ffff00; text-decoration:underline}
+
+.glxt .left-menu-area{float:left; width:210px; min-height:750px; }
+.glxt .left-menu{float:left; width:186px; background-color:#fff;border:1px solid #98cefe; border-radius:5px; overflow:hidden;padding:1px;min-height:750px;box-shadow:2px 2px 2px #eee; behavior: url(../PIE/PIE.htc);}
+.glxt .left-menu li .title{cursor:pointer; border-bottom:1px solid #98cefe; line-height:34px; height:34px; font-size:14px; color:#076bb6;background:url(../images/bg_base.png) 0 -330px repeat-x; font-weight:bold; padding-left:16px; position:relative;}
+.glxt .left-menu li dl{ display:none;}
+.glxt .left-menu li dl dd:last-child{border-bottom:1px solid #98cefe;}
+.glxt .left-menu li dl dd a{display:block;border-top:0;line-height:30px; padding-left:31px; font-size:12px; color:#888;}
+.glxt .left-menu li dl dd a:hover{color:#1a66aa;}
+i.icon-leftNavToggle{width:12px; height:12px;position:absolute; right:6px; top:10px; background-position:-50px -260px;}
+.glxt .left-menu li.selected i.icon-leftNavToggle{width:12px; height:12px;position:absolute; right:6px; top:10px; background-position:-70px -260px;}
+
+.glxt .right-area{overflow:hidden; min-height:750px; border:1px solid #98cefe; border-radius:5px;box-shadow:2px 2px 2px #eee; padding:1px 1px 20px; margin-bottom:20px; behavior: url(../../../PIE/PIE.htc); background-color:#fff}
+.glxt .right-area .title{border-bottom:1px solid #98cefe; line-height:34px; height:34px; font-size:16px; color:#076bb6;background:url(../images/bg_base.png) 0 -330px repeat-x; font-weight:bold; padding-left:16px; position:relative;}
+
+
+.glxt-table,.glxt-table td,.glxt-table th{;border-collapse:collapse; font-size:12px; vertical-align:middle}
+.glxt-table th{background-color:#deefff; text-align:left;font-weight:normal;height:32px; line-height:32px; color:#076bb6}
+.glxt-table th{font-size:12px; text-align:center; font-weight:bold}
+.glxt-table td{text-align:center; height:37px;word-break:break-all;}
+.glxt-table a.btn{ display:inline-block; height:23px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:6px 5px; color:#076bb6; behavior: url(../../../PIE/PIE.htc); position:relative}
+.glxt-table a.btn em{background-position:0 -80px; display:block;border-radius:5px; height:20px; padding:0 7px; behavior: url(../../../PIE/PIE.htc);position:relative}
+.glxt-table a.btn:hover{color:#005392}
+.glxt-table a.btn-blue{ background-position:0 -150px;display:inline-block; height:23px; border-radius:4px; padding:1px; margin:0 5px; color:#076bb6; color:#fff; width:90px; behavior: url(../../../PIE/PIE.htc); position:relative}
+.glxt-table a.btn-gray{ display:inline-block; height:23px; border:1px solid #ddd; border-radius:5px; padding:1px; margin:6px 5px; color:#888;box-shadow:1px 1px 1px #e5e5e5; behavior: url(../../../PIE/PIE.htc); position:relative}
+.glxt-table a.btn-gray em{background-position:0 -740px; display:block;border-radius:5px; height:20px; padding:0 7px}
+.glxt-table a.btn-blue-h30{ background-position:0 -900px;display:inline-block; height:30px; border-radius:5px;color:#076bb6; color:#fff; line-height:30px; font-size:14px; font-weight:bold; padding:0 14px; behavior: url(../../../PIE/PIE.htc); position:relative}
+
+.glxt-table a.btn-yellow{ display:inline-block; height:23px; border:1px solid #ffc64c; border-radius:5px; padding:1px; margin:6px 5px; color:#e29a00; behavior: url(../../../PIE/PIE.htc); position:relative}
+.glxt-table a.btn-yellow em{background-position:0 -1130px; display:block;border-radius:5px; height:19px; padding:0 7px; behavior: url(../../../PIE/PIE.htc);position:relative}
+.glxt-table a.btn-pink{ display:inline-block; height:23px; border:1px solid #fe9898; border-radius:5px; padding:1px; margin:6px 5px; color:#ff0000; behavior: url(../../../PIE/PIE.htc); position:relative}
+.glxt-table a.btn-pink em{background-position:0 -1105px; display:block;border-radius:5px; height:19px; padding:0 7px; behavior: url(../../../PIE/PIE.htc);position:relative}
+
+.zjps tr th:nth-child(2){text-align:left}
+.zjps tr td:nth-child(2){text-align:left}
+.zjps tr th:nth-child(5){text-align:left; padding-left:14px;}
+.zjps tr td:nth-child(5){text-align:left; padding-left:14px;}
+
+.ywzx .glxt-table a.btn em{min-width:90px;}
+.ywzx .glxt-table td{text-align:center; height:37px;word-break:break-all; padding:5px 0}
+.rsdl-table .glxt-table td{text-align:center; height:37px;word-break:break-all; padding:1px 0}
+
+
+
+
+.regular-checkbox{ width:16px !important;; height:16px !important;border:0 \9 !important;background:none !important;}
+.regular-radio{ width:26px !important;; height:26px !important;border:0 \9 !important;background:none !important; box-shadow:0 0 0 !important;}
+
+
+/* 弹出窗 */
+.dialog-bg{background-color:#000;width:100%;height:100%;left:0;top:0;filter:alpha(opacity=50);opacity:0.5;z-index:998;position:fixed;}
+.dialog{z-index: 999;width:660px;top:160px; left:50%; position: absolute;margin-left:-330px;  overflow:hidden;}
+.dialog-box{background-color:#fff;position:relative; padding:0 10px;margin-bottom:30px;border-radius:5px;  behavior: url(../../../PIE/PIE.htc); }
+.dialog-box h1{line-height:42px; height:42px; font-size:14px; color:#076bb6; font-weight:bold; border-bottom:1px solid #ddd; margin-bottom:14px; padding-left:11px;}
+.dialog-box h2{height: 1px;border-top: 1px solid #ddd; font-size:0; line-height:0; text-align:center; margin:36px 0 28px}
+.dialog-box h2 span{font-size:12px; color:#076bb6; font-weight:bold; position: relative;top: -3px;background: #fff;padding: 0 20px;}
+
+.dialog-dyjf{z-index: 999;width:660px;top:160px; left:50%; position:fixed;margin-left:-330px; overflow:hidden;}
+
+.dialog-jfts{z-index: 999;width:660px;top:190px; left:50%; position:fixed;margin-left:-330px; overflow:hidden;}
+.dialog-jfts .jfts{line-height:30px; text-align:center; border-bottom:1px solid #ddd; margin-bottom:24px; min-height:180px; padding-top:50px}
+
+.dialog-xxdr{z-index: 999;width:480px;top:50%; margin-top:-155px; left:50%; position:fixed;margin-left:-240px; overflow:hidden;}
+.dialog-xxdr .dialog-xxdr-con{line-height:30px; text-align:center; border-bottom:1px solid #ddd; margin-bottom:24px;  padding-top:65px; padding-bottom:65px}
+.dialog-xxdr .xxdr-con{line-height:30px; text-align:center; border-bottom:1px solid #ddd; margin-bottom:24px; padding:70px 0 75px}
+
+.dialog-zjps{z-index: 999;width:660px;top:150px; left:50%; position:fixed;margin-left:-330px; overflow:hidden;}
+.dialog-zjps .czzn{line-height:24px;padding:0 10px 18px 30px; height:300px; overflow-y:auto; margin-bottom:14px;}
+.dialog-zjps .czzn p{text-indent:2em}
+.dialog-zjps .cjck{line-height:24px;padding:0 10px 18px 30px; height:200px; overflow-y:auto; margin-bottom:14px;}
+.dialog-zjps .txlw{padding:0 30px 6px;margin-bottom:14px;}
+li.time input{background:url(../images/icon_time.png) 275px center no-repeat;}
+li.time-1 input{background:url(../images/icon_time.png) 150px center no-repeat;}
+
+.dialog-txjd{z-index: 999;width:880px;top:50px; left:50%; position:fixed;margin-left:-440px; overflow:hidden;}
+.dialog-txjd .txjd-content{border:1px solid #ddd;line-height:24px;padding:12px 6px 18px 28px; height:400px; overflow-y:auto; margin-bottom:14px; margin:14px 34px 20px;}
+.dialog-txjd .txjd-content p{text-indent:2em}
+.dialog-txjd .txjd-nav{font-size:0; line-height:0; position:relative; font-family:"宋体"; padding-top:12px;overflow-x:auto;overflow-y:hidden; }
+.dialog-txjd .txjd-nav .wrap{display:inline-block;white-space:nowrap;overflow:hidden; position:relative;padding-left:20px; }
+.dialog-txjd .txjd-nav .line{position:absolute; width:100%; border-bottom:1px solid #ddd; left:0; bottom:0; height:10px; display:block}
+.dialog-txjd .txjd-nav li{display:inline-block; font-size:14px;line-height:26px; height:26px; cursor:pointer; color:#000; text-align:center; position:relative; margin-bottom:0;border:1px solid #ddd;margin-right:5px; padding:0 10px; border-radius:5px 5px 0 0; width:120px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; z-index:99}
+.dialog-txjd .txjd-nav li.selected{color:#005993;border:1px solid #ddd; border-bottom:1px solid #fff;font-weight:bold; width:auto;}
+.dialog-txjd .txjd-nav li:hover{color:#0d63b0}
+.dialog-txjd .txjd-content .title{text-align:center; font-size:16px; font-weight:bold; margin:4px 0 7px;}
+
+.qp-dialog-bg{background-color:#fff;width:100%;height:100%;left:0;top:0;z-index:998;position:fixed;}
+.dialog-txjd-qp{z-index:999;width:100%;top:0; left:0; position: absolute;overflow:hidden; }
+.txjd-qp{background-color:#fff;position:relative;}
+.txjd-qp ul{padding:0 60px 24px; line-height:27px;}
+.txjd-qp .title{text-align:center; font-size:24px; font-weight:bold; padding:16px 0 18px;}
+.txjd-qp p{text-indent:2em; font-size:16px;}
+
+
+
+/* 班级列表 */
+.glxt .gzck-warp{padding:16px 14px 20px}
+.glxt .qyzp-warp{padding:16px 0 20px}
+
+/* 证书查看 */
+.glxt .zsck h1{padding:0 40px}
+.glxt .zsck{padding:24px 10px 20px}
+.glxt .zsck .zs{margin-top:24px}
+.glxt .zsck .zs img{max-width:580px}
+.glxt .zsck .zsck-input{color:#181818; border-bottom:1px dotted #747474; width:210px; display:inline-block; font-size:16px; height:28px; vertical-align:top;}
+.glxt .zsck .form label{width:112px; font-size:14px;}
+.glxt .zsck .left .photo{width:120px; height:150px;display:inline-block; border:1px solid #747474 }
+
+/* 职称申报说明 */
+.glxt .sbsm{padding:0 14px 20px}
+.glxt .sbsm img{max-width:700px}
+.glxt .sbsm .sbsm-title{font-size:22px; color:#076bb6; text-align:center; margin:24px 0;}
+
+/* 职称评审申报 */
+.glxt .pssb{padding:10px 14px 20px; position:relative;}
+.glxt .pssb .box{position:absolute; right:20px; top:28px; background-color:#fef1de; width:300px; border:1px solid #ffcb85; font-size:12px; padding:3px 10px 14px;}
+.glxt .pssb .box h1{font-size:14px; color:#fa7503;}
+.glxt .pssb .box span.dot{ display:inline-block; width:3px; height:3px; line-height:0; background-color:#444; margin-right:9px; vertical-align:top; position:relative; top:8px;}
+.glxt .pssb .box .btn{padding:5px 0 5px 23px;}
+.glxt .pssb .box .btn a{height:23px; line-height:23px; ;background:url(../images/bg_base.png) 0 -1005px repeat-x; display:inline-block; font-size:12px; padding:0 12px; color:#fff; text-align:center; border-radius:4px; margin:0 6px; behavior: url(../../../PIE/PIE.htc); position:relative;}
+
+/* 党员缴费 */
+.glxt .dyjf{padding:28px 32px 20px}
+.glxt .dyjf .con{border:1px solid #98cefe; position:relative; margin-top:30px; margin-bottom:26px}
+.glxt .dyjf .con h1{color:#076bb6; background-color:#fff; position:absolute; top:-12px; left:14px; padding:0 10px;}
+.glxt .dyjf .con .jfxx{ padding:20px 0 16px 90px;}
+.glxt .dyjf .con .jfxx li span{ width:285px; display:inline-block; color:#076bb6; line-height:30px;}
+.glxt .dyjf .con .jfxx li span label{ width:100px; text-align:right; display:inline-block; color:#444;}
+.glxt .dyjf .con .fllb{ padding:20px 0 16px 90px;}
+.glxt .dyjf .con .fllb li{line-height:30px;}
+.glxt .dyjf .con .fllb li label{color:#444; width:100px; text-align:center; display:inline-block;}
+.glxt .dyjf .con .fllb li span{color:#076bb6; width:100px; text-align:center; display:inline-block;}
+
+.btn-base{position:relative}
+.btn-base a.blue-h35{background-position:0 -270px;display:inline-block; height:35px; border-radius:5px; margin:0 6px; color:#076bb6; color:#fff; line-height:35px; padding:0 24px; font-size:15px; font-weight:bold; behavior: url(../../../PIE/PIE.htc);position:relative}
+.btn-base a.blue-h35:hover{color:#fcffb8}
+.btn-base a.blue-h30{background-position:0 -900px;display:inline-block; height:30px; border-radius:5px; margin:0 6px; color:#076bb6; color:#fff; line-height:28px; padding:0 18px; font-size:14px; font-weight:bold;behavior: url(../../../PIE/PIE.htc);position:relative}
+.btn-base a.blue-h30:hover{color:#fcffb8}
+.btn-base a.blue-h32{background-position:0 -150px;display:inline-block; height:32px; border-radius:5px; margin:0 6px; color:#076bb6; color:#fff; line-height:30px; padding:0 18px; font-size:14px; font-weight:bold;behavior: url(../../../PIE/PIE.htc);position:relative}
+.btn-base a.blue-h32:hover{color:#fcffb8}
+.btn-base a.gray-h30{ display:inline-block; height:30px; border:1px solid #ddd; border-radius:5px; padding:1px; margin:0 6px; color:#888; background-color:#fff;box-shadow:1px 1px 2px #e5e5e5;behavior: url(../../../PIE/PIE.htc);position:relative}
+.btn-base a.gray-h30 em{background-position:0 -940px; display:block;border-radius:5px; height:26px; line-height:26px; padding:0 18px;font-weight:bold;}
+.btn-base a.light-blue-h30{ display:inline-block; height:30px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 6px; color:#076bb6; background-color:#fff;behavior: url(../../../PIE/PIE.htc); position:relative}
+.btn-base a.light-blue-h30 em{background-position:0 -970px; display:block;border-radius:5px; height:26px; line-height:26px; padding:0 18px;font-weight:bold;}
+a.light-blue-h60{ display:inline-block; height:60px; border:1px solid #98cefe; border-radius:5px; padding:1px;color:#076bb6; background-color:#fff;behavior: url(../../../PIE/PIE.htc); position:relative}
+a.light-blue-h60 em{background-position:0 -1040px; display:block;border-radius:5px; height:56px; line-height:56px; padding:0 18px;font-weight:bold;}
+.btn-base a.light-blue{ display:inline-block; height:30px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 6px; color:#076bb6; background-color:#fff;behavior: url(../../../PIE/PIE.htc);position:relative}
+.btn-base a.light-blue em{background-position:0 -970px; display:block;border-radius:5px; height:26px; line-height:26px; padding:0 12px;font-weight:bold;}
+.btn-base-style{padding:26px 0 6px 10px;}
+.btn-base-style1{padding:12px 0 0 28px;}
+.btn-base-style2{margin:16px 0 2px 12px;}
+
+.btn-base .full-screen{padding-right:30px;}
+.btn-base .full-screen a{font-size:12px; color:#abb0ba;}
+.btn-base .narrow-full-screen{padding-right:30px;}
+.btn-base .narrow-full-screen a{font-size:14px; color:#abb0ba;}
+
+.btn-base .xxjl-text{font-size:12px; color:#ff0000; position:absolute; left:150px; top:-3px;}
+.btn-base .gzjl-text{font-size:12px; color:#ff0000; position:absolute; left:150px; top:7px;}
+
+
+/* 完善资料 */
+.glxt .wszl{padding:16px 14px 20px}
+.glxt .wszl-nav{font-size:0; line-height:0; position:relative; font-family:"宋体"; padding-top:12px;overflow-x:auto;overflow-y:hidden; }
+.glxt .wszl-nav .wrap{display:inline-block;white-space:nowrap;overflow:hidden; position:relative;padding-left:20px; }
+.glxt .wszl-nav .line{position:absolute; width:100%; border-bottom:1px solid #ddd; left:0; bottom:0; height:10px; display:block}
+.glxt .wszl-nav li{display:inline-block; font-size:14px;line-height:26px; height:26px; cursor:pointer; color:#888; text-align:center; position:relative; margin-bottom:0;margin-right:5px; padding:0 15px; border-radius:5px 5px 0 0;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; z-index:99;behavior: url(../../../PIE/PIE.htc);}
+.glxt .wszl-nav li.selected{color:#005993;border:1px solid #ddd; border-bottom:1px solid #fff;font-weight:bold;}
+.glxt .wszl-nav li:hover{color:#0d63b0}
+.glxt .tabs-wszl{padding:24px 0 12px}g
+.glxt .wszl .wxts{ background-color:#f0f8ff; font-size:12px; border-radius:5px; color:#076bb6; padding:8px 16px; margin:14px 14px 0;}
+.glxt .wszl .wxts a.down{height:22px; line-height:22px; background-position:0 -900px; display:inline-block; font-size:12px; color:#fff; text-align:center; border-radius:4px; padding:0 6px; behavior: url(../../../PIE/PIE.htc); position:relative;}
+.glxt .wszl .wxts a.down:hover{color:#fff6ab;}
+.page-site{font-size:12px; color:#888; padding-right:4px}
+.page-site em{ display:inline-block; width:30px; height:20px; line-height:18px; border:1px solid #ddd; text-align:center; border-radius:3px;behavior: url(../../../PIE/PIE.htc); margin-left:8px; box-shadow:2px 2px 2px #f2f2f2; cursor:pointer; background-color:#fff}
+.page-site em.active{ background-color:#0874d3; border:1px solid #0874d3; color:#fff; box-shadow:none}
+
+.glxt .ryxxck{padding:16px 14px 20px}
+.glxt .ryxxck-nav{font-size:0; line-height:0; position:relative; font-family:"宋体"; padding-top:12px;overflow-x:auto;overflow-y:hidden; }
+.glxt .ryxxck-nav .wrap{display:inline-block;white-space:nowrap;overflow:hidden; position:relative; padding-left:5px;}
+.glxt .ryxxck-nav .line{position:absolute; width:100%; border-bottom:1px solid #ddd; left:0; bottom:0; height:10px; display:block}
+.glxt .ryxxck-nav li{display:inline-block; font-size:14px;line-height:26px; height:26px; cursor:pointer; color:#888; text-align:center; position:relative; margin-bottom:0;margin-right:5px; padding:0 5px; border-radius:5px 5px 0 0;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; z-index:99;behavior: url(../../../PIE/PIE.htc);}
+.glxt .ryxxck-nav li.selected{color:#005993;border:1px solid #ddd; border-bottom:1px solid #fff;font-weight:bold;}
+.glxt .ryxxck-nav li:hover{color:#0d63b0}
+
+/* 员工个人信息 */
+.glxt .grxx{padding:26px 26px 20px; font-size:12px;}
+.glxt .grxx h2{height: 1px;border-top: 1px solid #ddd; font-size:0; line-height:0; text-align:center; margin:36px 0 28px}
+.glxt .grxx h2 span{font-size:12px; color:#076bb6; font-weight:bold; position: relative;top: -3px;background: #fff;padding: 0 20px;}
+
+/* 公用表格样式 */
+.public-table{width:320px;}
+.public-table,.public-table td,.public-table th{height:32px;border:1px solid #dbdbdb;border-collapse:collapse; font-size:12px; vertical-align:middle}
+.public-table td,.public-table th{text-align:center; color:#888;}
+a.btn-lightblue{ display:inline-block; height:23px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 5px; color:#076bb6; position:relative; behavior: url(../../../PIE/PIE.htc);}
+a.btn-lightblue em{background-position:0 -80px; display:block;border-radius:5px; padding:0 8px; height:21px;font-size:12px; behavior: url(../../../PIE/PIE.htc); position:relative}
+a.btn-lightblue:hover{color:#005392}
+.qdqx .public-table{margin:0 auto}
+
+a.btn-gray-h30{ display:inline-block; height:30px; border:1px solid #ddd; border-radius:5px; padding:1px; margin:0 6px; color:#888; background-color:#fff;behavior: url(../../../PIE/PIE.htc); position:relative}
+a.btn-gray-h30 em{background-position:0 -940px; display:block;border-radius:5px; height:26px; line-height:26px; padding:0 15px;font-size:14px; }
+
+a.btn-blue-ywlc{ display:inline-block; height:34px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 6px; color:#0f6ab1; background-color:#fff;behavior: url(../../../PIE/PIE.htc); position:relative}
+a.btn-blue-ywlc em{background-position:0 -105px; display:block;border-radius:5px; height:30px; line-height:30px; width:120px;font-size:12px; font-weight:bold;}
+
+.cjck-table{width:500px; margin:28px auto 5px}
+.cjck-table,.cjck-table td,.cjck-table th{height:32px;border:1px solid #9b9b9b;border-collapse:collapse; font-size:14px; vertical-align:middle}
+.cjck-table td,.cjck-table th{text-align:center; color:#575757;}
+
+/* 表单 */
+.glxt .zxbm{padding:18px 26px 20px; font-size:12px;}
+.glxt .zxbm .name{ color:#076bb6; font-weight:bold}
+.glxt .zxbm .bmxx-title{ color:#076bb6; font-weight:bold; position:relative; margin:12px 0}
+.glxt .zxbm .bmxx-title:before{content: " ";height:1px; left:60px; position:absolute; top:10px; width:90%; border-top:1px solid #ddd;}
+.tabs-nav li:hover{color:#0d63b0}
+
+/* 业务 */
+.glxt .ywxz{padding:18px 16px 20px; font-size:12px;}
+.glxt .ywxz .ywxz-title{ color:#076bb6; font-weight:bold; position:relative; margin-bottom:20px; font-size:14px; background-color:#deefff; line-height:34px; height:34px; padding:0 18px;}
+.glxt .ywxz .wtms{padding-left:16px; margin-bottom:18px}
+.glxt .ywxz .wtms h1{ font-size:14px; font-weight:bold; margin:14px 0}
+.glxt .ywxz .wtms textarea{width:450px; margin-bottom:12px;}
+.glxt .ywxz .wtms a{margin-left:0; margin-right:10px;}
+.glxt .ywxz .ywsm{ padding-left:16px;}
+.ywtj-btn{font-size:0; padding-top:14px; padding-left:16px;}
+
+/* 业务咨询 */
+.shjd{padding:10px 0 0 180px; position:relative;}
+.shjd .line{border-left:6px solid #ddd; min-height:420px; padding:20px 0 10px; position:relative}
+.shjd li{position:relative; padding-left:20px; padding-bottom:22px;}
+.shjd li span.dot{ width:18px; height:18px; background-color:#e72525; border-radius:50%; position:absolute; left:-12px; top:4px; }
+.shjd li span.dot em{ width:12px; height:12px; background-color:#fff; border-radius:50%; position:absolute; left:3px; top:3px; }
+.shjd li span.time{ position:absolute; left:-130px; top:0; height:24px; line-height:24px; background-color:#e72525; color:#fff; padding:0 16px 0 16px; font-size:12px; border-radius:5px; }
+.shjd .time-bg{border-color: transparent transparent transparent #e72525;border-style: dashed dashed dashed solid;border-width: 5px 0 5px 5px;height: 0;right:-5px;overflow: hidden;position: absolute;top: 7px;width: 0;z-index: 1;}
+
+.shjd li.shjd-bg-blue span.time{background-color:#076bb6}
+.shjd li.shjd-bg-blue span.dot{ width:18px; height:18px; background-color:#076bb6; border-radius:50%; position:absolute; left:-12px; top:4px;}
+.shjd li.shjd-bg-blue span.dot em{ width:12px; height:12px; background-color:#076bb6; border-radius:50%; position:absolute; left:3px; top:3px; }
+.shjd-bg-blue .time-bg{border-color: transparent transparent transparent #076bb6;}
+.shjd li.shjd-bg-red span.time{background-color:#e72525}
+.shjd li.shjd-bg-red span.dot{ width:18px; height:18px; background-color:#e72525; border-radius:50%; position:absolute; left:-12px; top:4px; }
+.shjd li.shjd-bg-red span.dot em{ width:12px; height:12px; background-color:#e72525; border-radius:50%; position:absolute; left:3px; top:3px; }
+.shjd-bg-red .time-bg{border-color: transparent transparent transparent #e72525;}
+.shjd li.shjd-bg-gray span.time{background-color:#ddd}
+.shjd li.shjd-bg-gray span.dot{ width:18px; height:18px; background-color:#ddd; border-radius:50%; position:absolute; left:-12px; top:4px; }
+.shjd li.shjd-bg-gray span.dot em{ width:12px; height:12px; background-color:#fff; border-radius:50%; position:absolute; left:3px; top:3px; }
+.shjd-bg-gray .time-bg{border-color: transparent transparent transparent #ddd;}
+
+.shjd .shjd-btn{font-size:14px}
+.shjd a.blue-btn{ display:inline-block; height:25px;border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 5px; color:#076bb6;}
+.shjd a.blue-btn em{background-position:0 -460px; display:block;border-radius:5px; padding:0 24px; height:21px; font-weight:bold;}
+.shjd a.red-btn{ display:inline-block; height:25px;border:1px solid #ff5050; border-radius:5px; padding:1px; margin:0 5px; color:#e72525;}
+.shjd a.red-btn em{background-position:0 -485px; display:block;border-radius:5px; padding:0 24px; height:21px; font-weight:bold;}
+.shjd span.gray-white{display:inline-block; height:25px;border:1px solid #ddd; border-radius:5px; padding:1px; margin:0 5px; color:#ddd; padding:0 24px; font-weight:bold;}
+.shjd span.gray{display:inline-block; height:25px;border:1px solid #ddd; border-radius:5px; padding:1px; margin:0 5px; color:#fff; padding:0 24px; background-color:#ddd; font-weight:bold;}
+.shjd .t-round{width:6px; height:6px; border-radius:50%; position:absolute; top:-2px; left:-6px; display:block; background-color:#ddd}
+.shjd .b-round{width:6px; height:6px; border-radius:50%; position:absolute; bottom:-2px; left:-6px; display:block; background-color:#ddd}
+
+.ztsm{padding:34px 0 6px 70px}
+.ztsm span{ margin-right:24px;}
+.ztsm span.dot-blue{color:#076bb6}
+.ztsm span.dot-blue i{width:20px; height:20px; background-color:#076bb6; border-radius:50%; display:inline-block; position:relative; top:4px; margin-right:8px;}
+.ztsm span.dot-red{color:#e72525}
+.ztsm span.dot-red i{width:20px; height:20px; background-color:#e72525; border-radius:50%; display:inline-block; position:relative; top:4px; margin-right:8px;}
+.ztsm span.dot-gray{color:#888}
+.ztsm span.dot-gray i{width:20px; height:20px; background-color:#ddd; border-radius:50%; display:inline-block; position:relative; top:4px; margin-right:8px;}
+.ztsm span.dot-gray-write{color:#ccc}
+.ztsm span.dot-gray-write i{width:20px; height:20px; background-color:#fff; border-radius:50%; display:inline-block; position:relative; top:4px; margin-right:8px; border:3px solid #ddd;}
+
+.clyj{width:208px; background-color:#f8f8f8; position:absolute; right:20px; top:90px; border:1px solid #ddd; font-size:12px; padding:10px 16px 12px;}
+.clyj p{line-height:24px;}
+
+.dialog-box{padding-bottom:20px; }
+.dialog-box .form li{margin-bottom:14px;font-size:0; position:relative;}
+.dialog-box .form li span.txt{font-size:12px;height:30px; line-height:30px;}
+.dialog-box .form label{display:inline-block; text-align:right; font-size:12px; margin-right:6px; height:30px; line-height:30px;vertical-align:top;}
+.dialog-box .form li input[type='text']{height:30px; width:200px; line-height:30px; border-radius:4px; border:1px solid #ddd; padding-left:10px;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; vertical-align:top;behavior: url(../../../PIE/PIE.htc); position:relative;}
+.dialog-box .form textarea{height:80px; width:320px; line-height:22px; border-radius:4px; border:1px solid #ddd; padding-left:10px;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; vertical-align:top; padding-top:4px;resize:none; overflow:auto;behavior: url(../../../PIE/PIE.htc); position:relative;}
+.dialog-box .form select{ background: transparent; width:228px;-webkit-appearance: none; border:0;padding-left:5px;}
+.dialog-box .form select option{height:24px;}
+.dialog-box .form .select-bg{ height:30px; line-height:30px; width:200px; border-radius:4px; border:1px solid #ddd;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; display:inline-block; overflow:hidden;background:url(../images/select_arrow.png) right center no-repeat; position:relative; vertical-align:top;behavior: url(../../../PIE/PIE.htc);}
+.dialog-box .form .btn{text-align:center; font-size:0; padding-top:15px;border-top: 1px solid #ddd; margin-top:28px;}
+.dialog-box .form a.btn-blue{width:82px; height:32px; line-height:30px; background-position:-10px -290px; display:inline-block; font-size:14px; color:#fff; text-align:center; border-radius:5px;font-weight:bold}
+.dialog-box .form a.btn-light-blue{width:82px; height:32px; line-height:30px; background-position:-200px -415px; display:inline-block; font-size:14px; color:#0d63b0; text-align:center; font-weight:bold}
+.dialog-box .form a.btn-gray{width:82px; height:32px; line-height:30px; background-position:-200px -370px; display:inline-block; font-size:14px; color:#888; text-align:center; font-weight:bold; box-shadow:0 1px 2px #e5e5e5}
+.dialog-box .form label{ width:95px}
+
+.dialog-box .gzxq .form input{color:#888;}
+.dialog-box .gzxq .form select{color:#888}
+
+.dialog-tjlw .form label{ width:135px}
+
+.dialog-zjps .form .select-bg{width:300px}
+.dialog-zjps .form select{width:328px}
+.dialog-zjps .form li input{width:300px}
+.dialog-zjps .form textarea{width:475px}
+.dialog-zjps .remark{font-size:12px; color:#ff0000; padding-left:100px}
+.dialog-tjlw .remark a.down{height:22px; line-height:22px; background-position:0 -900px; display:inline-block; font-size:12px; color:#fff; text-align:center; border-radius:4px; padding:0 6px;}
+.dialog-tjlw .remark a.down:hover{color:#fff6ab;}
+
+.dialog-tjlw{z-index: 999;width:660px;top:150px; left:50%; position:absolute;margin-left:-330px; overflow:hidden;}
+.dialog-tjlw .form .select-bg{width:300px}
+.dialog-tjlw .form select{width:328px}
+.dialog-tjlw .form li input{width:300px}
+.dialog-tjlw .form textarea{width:415px}
+.dialog-tjlw .remark{font-size:12px; color:#ff0000; padding-left:140px}
+.dialog-tjlw .tjlw{padding:0 30px 6px;margin-bottom:14px;}
+
+.dialog-tjjl .form label{ width:135px}
+.dialog-tjjl{z-index: 999;width:660px;top:50%; left:50%; position:fixed;margin-left:-330px; margin-top:-240px; overflow:hidden;}
+.dialog-tjjl .form .select-bg{width:300px}
+.dialog-tjjl .form select{width:328px}
+.dialog-tjjl .form li input{width:300px}
+.dialog-tjjl .form textarea{width:415px}
+.dialog-tjjl .remark{font-size:12px; color:#ff0000; padding-left:140px}
+.dialog-tjjl .tjlw{padding:0 30px 6px;margin-bottom:14px;}
+
+.dialog-jjss{z-index: 999;width:500px;top:150px; left:50%; position:fixed;margin-left:-250px; overflow:hidden;}
+.dialog-jjss .form{padding-left:30px; padding-top:10px; padding-right:30px;}
+.dialog-jjss .form li,.dialog-jjss .form li label{font-size:14px;}
+.dialog-jjss .form li input{width:260px;}
+.dialog-jjss .form textarea{width:260px;}
+.dialog-jjss .form li em{position:relative; top:3px}
+.dialog-jjss .form li label{font-size:14px; float:left;}
+.dialog-jjss .form li p{overflow:hidden;position:relative; top:3px}
+
+
+.dialog-box .ygxq .form li{margin-left:80px}
+.dialog-box .ygxq .form li input{color:#888; width:240px;}
+.dialog-box .ygxq .form textarea{color:#888;}
+
+.dialog-ryxxtj{z-index: 999;width:480px;top:50%; margin-top:-180px; left:50%; position:fixed;margin-left:-240px; overflow:hidden;}
+.dialog-ryxxtj .form{border-bottom:1px solid #ddd; margin-bottom:18px; min-height:180px;}
+.dialog-ryxxtj .form .select-bg{width:240px}
+.dialog-ryxxtj .form select{width:268px}
+.dialog-ryxxtj .form li input{width:240px}
+.dialog-ryxxtj .form textarea{width:315px}
+.dialog-ryxxtj .form label{ width:120px}
+
+.glxt .form li{margin-bottom:14px;font-size:0;}
+.glxt .form li span.txt{font-size:12px;height:30px; line-height:30px;}
+.glxt .form label{display:inline-block; width:86px; text-align:right; font-size:12px; margin-right:6px; height:30px; line-height:30px;vertical-align:top;}
+.glxt .form input{height:30px; width:240px; line-height:30px; border-radius:4px; border:1px solid #ddd; padding-left:10px;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; vertical-align:top;background:url(../images/search_input_bg.png) 0 -2px repeat-x \9; behavior: url(../../../PIE/PIE.htc); }
+.glxt .form select{ background: transparent; width:268px;-webkit-appearance: none; border:0;padding-left:5px;}
+.glxt .form select option{height:24px;}
+.glxt .form .select-bg{ height:30px; line-height:30px; width:240px; border-radius:4px; border:1px solid #ddd;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; display:inline-block; overflow:hidden;background:url(../images/select_arrow.png) right center no-repeat; position:relative; vertical-align:top;behavior: url(../../../PIE/PIE.htc);}
+.glxt .form textarea{height:80px; width:572px; line-height:22px; border-radius:4px; border:1px solid #ddd; padding-left:10px;color:#444; box-shadow:0 1px 1px #e5e5e5 inset; font-size:12px; vertical-align:top; padding-top:4px;resize:none; overflow:auto;background:url(../images/search_input_bg.png) 0 -2px repeat-x \9; behavior: url(../../../PIE/PIE.htc);}
+.glxt .form .btn{text-align:center; font-size:0; padding-top:10px;}
+.glxt .form a.btn-blue{width:82px; height:32px; line-height:30px; background-position:-10px -290px; display:inline-block; font-size:14px; color:#fff; text-align:center; border-radius:5px;font-weight:bold; behavior: url(../../../PIE/PIE.htc);}
+.glxt .form a.btn-light-blue{width:82px; height:32px; line-height:30px; background-position:-200px -415px; display:inline-block; font-size:14px; color:#0d63b0; text-align:center; font-weight:bold}
+
+.glxt .zxbm .form label{width:86px}
+.glxt .ywxz .form input{width:150px}
+.glxt .ywxz .form .select-bg{width:150px}
+.glxt .ywxz .form select{width:178px}
+.ywxz-btn{font-size:0; padding-top:10px; padding-left:92px;}
+.glxt .grxx .form input{color:#888;}
+.glxt .grxx .form select{color:#888}
+.glxt .ywxz .form label{font-size:14px}
+.glxt .ywxz  .form li span.txt{font-size:12px;height:30px; line-height:30px; color:#888;}
+
+.glxt .tabs-wszl .form label{width:112px}
+.glxt .tabs-wszl .form input{width:120px}
+.glxt .tabs-wszl .form .select-bg{width:120px}
+.glxt .tabs-wszl .form select{width:148px}
+
+.glxt .zsck-wrap{ border:5px solid #efefef; margin:20px 15px;}
+.glxt .zsck-wrap .form{border:1px solid #8d8d8d; border-radius:5px; behavior: url(../../../PIE/PIE.htc); padding:15px 0}
+.glxt .zsck-wrap .form label{width:112px}
+.glxt .zsck-wrap .form input{width:210px}
+.glxt .zsck-wrap .photo .left{margin:20px 0 10px; float:left; width:328px; text-align:center;}
+.glxt .zsck-wrap .photo .left p{font-size:12px; }
+.glxt .zsck-wrap .photo .right{overflow:hidden;}
+.glxt .zsck-wrap .photo .right dl{margin-top:26px}
+
+
+.glxt .pssb .form li{margin-bottom:10px}
+.glxt .pssb .form label{width:208px}
+.glxt .pssb .form input{width:180px}
+.glxt .pssb .form .select-bg{width:180px}
+.glxt .pssb .form select{width:208px}
+.glxt .pssb .form textarea{width:300px}
+.glxt .pssb .form .text-1{font-size:12px; color:#888; padding-left:220px; padding-top:5px;}
+.glxt .pssb .form .text-2{font-size:12px; color:#888; padding-left:6px; position:relative; top:4px;}
+.glxt .pssb .form .text-3{font-size:12px; color:#444; padding-left:215px; padding-top:4px;}
+.glxt .pssb .form .text-3 em{color:#ff0000}
+.glxt .pssb .form  a.view{font-size:12px; color:#076bb6; position:relative; top:3px;}
+.glxt .pssb .form  a.view:hover{color:#004e88}
+
+
+.glxt .pssb .form a.upfile-btn{display:inline-block; height:26px; border:1px solid #98cefe; border-radius:5px; padding:1px; margin:0 6px; color:#076bb6; background-color:#fff; font-size:12px; position:relative; behavior: url(../../../PIE/PIE.htc);}
+.glxt .pssb .form a.upfile-btn em{background-position:0 -970px; display:block;border-radius:5px; height:22px; line-height:22px; padding:0 10px;font-weight:bold;}
+.glxt .pssb .form a.upfile-btn input{position: absolute; width:74px; height:36px;right: 0;top: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer}
+
+.glxt .form .select-bg{
+	width:120px;
+}
+.glxt select option {
+    height: 24px;
+}
+.glxt .form select {
+    width: 148px;
+    height:32px;
+}
+.f12{
+	float:right;
+}
+.glxt .form input {
+    width: 120px;
+}
+.f-dark-red {
+    color: #ff0000;
+}

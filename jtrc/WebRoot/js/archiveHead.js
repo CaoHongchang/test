@@ -1,0 +1,10 @@
+//缓存档案信息
+window.top.cacheArchive={
+	cacheId:'',//档案id
+	cacheDpno:'',//档案编号
+	cacheIdnum:'',//身份证
+	cacheName:'',//姓名
+	cacheSchool:'',//毕业院校
+	cacheMajor:'',//所学专业
+	cacheTel:''//联系电话
+};

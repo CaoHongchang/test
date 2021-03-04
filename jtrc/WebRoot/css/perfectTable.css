@@ -1,0 +1,69 @@
+/*
+ *表格美化函数配套样式（应用于联通OPM）
+ *作者：方声健 2010-07-21
+ *邮箱：fangsj@asiainfo-linkage.com
+ *版本：V1.0
+ */
+table.perfect tr th {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#eeeeee, EndColorStr=#ffffff);/*表头渐变效果，非IE不支持*/
+	background-color: #eeeeee;
+	font-family:Verdana, "宋体"; 
+	font-size: 12px;	
+	height:23px;
+	line-height: 18px;
+	border-top-style: none;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #D2D2D3;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D2D2D3;
+	white-space: nowrap;
+}
+
+table.perfect tr td{
+	font-family:Verdana,"宋体"; 
+	font-size: 12px;
+	height:22px;
+	margin-left:5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #D2D2D3;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #FFFFFF;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #D2D2D3;
+	white-space: nowrap;
+	padding: 2px   3px;
+}
+
+table.perfect {
+	width:100%;
+	jason:expression(cellSpacing="0");/*非IE浏览器不支持，可在<table>中加属性cellspacing="0"*/
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #D2D2D3;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D2D2D3;
+}
+
+/*间隔行底色*/
+table.perfect .tr_compart{
+	background-color: #f9f9f9;
+}
+
+/*鼠标覆盖行底色*/
+table.perfect .tr_over {
+	background-color: #eeeeee;
+}
+
+/*选中行底色*/
+table.perfect .tr_click{
+	background-color: #dddddd;
+}
