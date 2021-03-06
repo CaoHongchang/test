@@ -49,7 +49,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 /**
- * 学历教育
+ * 学历教育 修改
  * @author liu_quan
  *
  */
