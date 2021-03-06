@@ -27,7 +27,7 @@ import com.i84.earnpoint.common.RequestUtil;
 import com.i84.earnpoint.common.ResultConstant;
 import com.i84.earnpoint.model.AqsczxInfo;
 /**
- * 安全生产标准化咨询
+ * 安全生产标准化咨询 修改
  * @author qiuwm
  *
  */
